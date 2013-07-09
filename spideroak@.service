@@ -1,0 +1,8 @@
+[Unit]
+Description=Spider Oak backup service
+
+[Service]
+Type=simple
+EnvironmentFile=-/etc/sysconfig/SpiderOak
+User=%i
+ExecStart=/usr/bin/SpiderOak --headless $SPIDEROAKOPTS &

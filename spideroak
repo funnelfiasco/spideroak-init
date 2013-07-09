@@ -1,0 +1,35 @@
+#!/bin/bash
+
+# spideroak.init
+#
+#	A shell script wrapper to start the SpiderOak service in
+# headless mode.
+#
+# chkconfig: 2345 90 10
+# description: Start the SpiderOak service
+
+. /etc/rc.d/init.d/functions
+
+# Check for a config file
+[ -f /etc/sysconfig/SpiderOak ] && . /etc/sysconfig/SpiderOak
+
+[ -z "$SPIDEROAKUSER" ] && SPIDEROAKUSER='bcotton'
+[ -z "$SPIDEROAKCMD" ] && SPIDEROAKCMD='/usr/bin/SpiderOak'
+
+case "$1" in
+  start)
+	for user in $SPIDEROAKUSER; do
+		runuser $user -c "$SPIDEROAKCMD --headless $SPIDEROAKOPTS &"
+		retval=$?
+		[ $? ] && echo_success || echo_failure
+	done
+	;;
+  stop)
+	kill `pidof SpiderOak` && echo "SpiderOak stopped"
+	retval=$?
+	
+	[ $? ] && echo_success || echo_failure
+	;;
+  *)
+	echo "Usage: $0 {start|stop}"
+esac
