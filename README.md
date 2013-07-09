@@ -2,7 +2,7 @@
 This project provides tools for starting and stopping the SpiderOak service
 (https://www.spideroak.com) from a SysV init or systemd environment.
 
-This project includes the following files:
+* This project includes the following files:
     * COPYING -- the license (public domain where applicable, CC0 elsewhere)
     * README.md -- this file
     * spideroak -- a SysV init script
