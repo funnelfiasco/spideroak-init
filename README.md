@@ -17,7 +17,7 @@ installations - copy it to the appropriate directory for your operating system
 and edit /etc/init.d/spideroak to point to the correct location.)
 
 To install on a system using systemd, copy the file 'spideroak@.service' to
-/etc/systemd/system/spideroak@.service and the file 'SpiderOak' to
+/usr/lib/systemd/system/spideroak@.service and the file 'SpiderOak' to
 /etc/sysconfig/SpiderOak . 
 
 ## Configuration
